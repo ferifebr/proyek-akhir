@@ -12,7 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
 
+    
+});
 Route::get('/nrp/{nrp}/{name}', function ($nrp, $name) {
     return "NRP : " .$nrp . "<br>" ."Nama : " . $name;
 })->where('nrp', '[0-9]+', 'name', '[A-Z]+');
+
+Route::get('person', 'PersonController@index');
+Route::get('/person/show/{param}', 'PersonController@show');
+Route::resource('/student', 'StudentController');
